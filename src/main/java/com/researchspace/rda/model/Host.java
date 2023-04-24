@@ -70,13 +70,7 @@ public class Host {
 
   private Optional<String> storage_type;
 
-  public enum SupportsVersioning {
-    YES,
-    NO,
-    UNKNOWN
-  }
-
-  private Optional<SupportsVersioning> supports_versioning;
+  private Optional<YesNo> supports_versioning;
 
   private String title;
 
