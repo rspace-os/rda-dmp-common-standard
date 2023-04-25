@@ -2,13 +2,19 @@ package com.researchspace.rda.model;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.util.Optional;
 import java.util.Set;
 import java.util.List;
+import java.util.Map;
 import java.net.URI;
+import com.fasterxml.jackson.annotation.JsonSetter;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.net.URISyntaxException;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class DMP {
 
   /*
@@ -47,12 +53,22 @@ public class DMP {
    */
   private Optional<String> description;
 
+  @JsonProperty("description")
+  public void setDescription(String description) {
+    this.description = Optional.ofNullable(description);
+  }
+
   private DmpId dmp_id;
 
   /*
    * To describe ethical issues directly in a DMP.
    */
   private Optional<String> ethical_issues_description;
+
+  @JsonProperty("ethical_issues_description")
+  public void setEthical_issues_description(String ethical_issues_description) {
+    this.ethical_issues_description = Optional.ofNullable(ethical_issues_description);
+  }
 
   private YesNo ethical_issues_exist;
 
@@ -61,6 +77,17 @@ public class DMP {
    * be found.
    */
   private Optional<URI> ethical_issues_report;
+
+  @JsonProperty("ethical_issues_report")
+  public void setEthical_issues_report(String ethical_issues_report) throws URISyntaxException {
+    this.ethical_issues_report = Optional.ofNullable(ethical_issues_report).flatMap(eir -> {
+      try {
+        return Optional.of(new URI(eir));
+      } catch (Exception e) {
+        return Optional.empty();
+      }
+    });
+  }
 
   /*
    * Language of the DMP expressed using ISO 639-3.

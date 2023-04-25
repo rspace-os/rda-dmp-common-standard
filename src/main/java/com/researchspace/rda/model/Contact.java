@@ -3,6 +3,7 @@ package com.researchspace.rda.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
 /**
  * For modelling a party which can provide any information on the DMP. This is
@@ -10,6 +11,7 @@ import lombok.AllArgsConstructor;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Contact {
 
   // Identifier for a contact person

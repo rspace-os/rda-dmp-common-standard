@@ -3,8 +3,10 @@ package com.researchspace.rda.model;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.util.Optional;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
  * This follows the definition of Dataset in the W3C DCAT specification.
@@ -17,16 +19,28 @@ import java.util.Set;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Dataset {
 
   public static class DatasetId {
 
     public enum DatasetIdType {
+
+      @JsonProperty("handle")
       HANDLE,
+
+      @JsonProperty("doi")
       DOI,
+
+      @JsonProperty("ark")
       ARK,
+
+      @JsonProperty("url")
       URL,
+
+      @JsonProperty("other")
       OTHER
+
     }
 
     private String idenfitier;
@@ -36,6 +50,11 @@ public class Dataset {
   }
 
   private Optional<String> data_quality_assurance;
+
+  @JsonProperty("data_quality_assurance")
+  public void setDataQualityAssurance(String data_quality_assurance) {
+    this.data_quality_assurance = Optional.ofNullable(data_quality_assurance);
+  }
 
   private DatasetId dataset_id;
 
@@ -47,12 +66,22 @@ public class Dataset {
    */
   private Optional<String> description;
 
+  @JsonProperty("description")
+  public void setDescription(String description) {
+    this.description = Optional.ofNullable(description);
+  }
+
   private Set<Distribution> distribution;
 
   /*
    * Encoded using the relevant ISO 8601 Date and Time compliant string.
    */
   private Optional<String> issued;
+
+  @JsonProperty("issued")
+  public void setIssued(String issued) {
+    this.issued = Optional.ofNullable(issued);
+  }
 
   private Set<String> keyword;
 
@@ -61,11 +90,21 @@ public class Dataset {
    */
   private Optional<String> language;
 
+  @JsonProperty("language")
+  public void setLanguage(String language) {
+    this.language = Optional.ofNullable(language);
+  }
+
   private Set<Metadata> metadata;
 
   private YesNo personal_data;
 
   private Optional<String> preservation_statement;
+
+  @JsonProperty("preservation_statement")
+  public void setPreservation_statement(String preservation_statement) {
+    this.preservation_statement = Optional.ofNullable(preservation_statement);
+  }
 
   private Set<SecurityAndPrivacy> security_and_privacy;
 
@@ -89,6 +128,11 @@ public class Dataset {
    * http://vocabularies.coar-repositories.org/pubby/resource_type.html
    */
   private Optional<String> type;
+
+  @JsonProperty("type")
+  public void setType(String type) {
+    this.type = Optional.ofNullable(type);
+  }
 
 }
 

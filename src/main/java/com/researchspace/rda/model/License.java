@@ -2,6 +2,7 @@ package com.researchspace.rda.model;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.net.URI;
 
 /**
@@ -12,6 +13,7 @@ import java.net.URI;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class License {
 
   private URI license_ref;

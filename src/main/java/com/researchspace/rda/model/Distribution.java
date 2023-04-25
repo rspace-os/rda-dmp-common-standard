@@ -2,9 +2,12 @@ package com.researchspace.rda.model;
 
 import lombok.Data;
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 import java.util.Optional;
 import java.net.URI;
 import java.util.Set;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.net.URISyntaxException;
 
 /**
  * The term "distribution" used here is as defined by the very widely used W3C
@@ -18,6 +21,7 @@ import java.util.Set;
  */
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class Distribution {
 
   /*
@@ -26,18 +30,41 @@ public class Distribution {
    */
   private Optional<URI> access_url;
 
+  @JsonProperty("access_url")
+  public void setAccessUrl(String access_url) throws URISyntaxException {
+    this.access_url = Optional.ofNullable(access_url).flatMap(eir -> {
+      try {
+        return Optional.of(new URI(eir));
+      } catch (Exception e) {
+        return Optional.empty();
+      }
+    });
+  }
+
   /*
    * Indicates how long this distribution will be/ should be available. MUST be
    * encoded using the relevant ISO 8601 Date and Time compliant string.
    */
   private Optional<String> available_until;
 
+  @JsonProperty("available_until")
+  public void setAvailableUntil(String available_until) {
+    this.available_until = Optional.ofNullable(available_until);
+  }
+
   private Optional<Long> byte_size;
 
   public enum DataAccess {
+
+    @JsonProperty("open")
     OPEN,
+
+    @JsonProperty("shared")
     SHARED,
+
+    @JsonProperty("closed")
     CLOSED
+
   }
 
   private DataAccess data_access;
@@ -50,11 +77,27 @@ public class Distribution {
    */
   private Optional<String> description;
 
+  @JsonProperty("description")
+  public void setDescription(String description) {
+    this.description = Optional.ofNullable(description);
+  }
+
   /*
    * The URL of the downloadable file in a given format. E.g. CSV file or RDF
    * file.
    */
   private Optional<URI> download_url;
+
+  @JsonProperty("download_url")
+  public void setDownloadUrl(String download_url) throws URISyntaxException {
+    this.download_url = Optional.ofNullable(download_url).flatMap(eir -> {
+      try {
+        return Optional.of(new URI(eir));
+      } catch (Exception e) {
+        return Optional.empty();
+      }
+    });
+  }
 
   /*
    * Format according to:
