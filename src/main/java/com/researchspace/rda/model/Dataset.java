@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import java.util.Optional;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /**
  * This follows the definition of Dataset in the W3C DCAT specification.
@@ -20,6 +22,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Dataset {
 
   public static class DatasetId {
@@ -49,14 +52,14 @@ public class Dataset {
 
   }
 
-  private Optional<String> data_quality_assurance;
+  private Optional<String> dataQualityAssurance;
 
-  @JsonProperty("data_quality_assurance")
-  public void setDataQualityAssurance(String data_quality_assurance) {
-    this.data_quality_assurance = Optional.ofNullable(data_quality_assurance);
+  @JsonProperty("dataQualityAssurance")
+  public void setDataQualityAssurance(String dataQualityAssurance) {
+    this.dataQualityAssurance = Optional.ofNullable(dataQualityAssurance);
   }
 
-  private DatasetId dataset_id;
+  private DatasetId datasetId;
 
   /*
    * Description is a property in both Dataset and Distribution, in compliance
@@ -97,20 +100,20 @@ public class Dataset {
 
   private Set<Metadata> metadata;
 
-  private YesNo personal_data;
+  private YesNo personalData;
 
-  private Optional<String> preservation_statement;
+  private Optional<String> preservationStatement;
 
-  @JsonProperty("preservation_statement")
-  public void setPreservation_statement(String preservation_statement) {
-    this.preservation_statement = Optional.ofNullable(preservation_statement);
+  @JsonProperty("preservationStatement")
+  public void setPreservationStatement(String preservationStatement) {
+    this.preservationStatement = Optional.ofNullable(preservationStatement);
   }
 
-  private Set<SecurityAndPrivacy> security_and_privacy;
+  private Set<SecurityAndPrivacy> securityAndPrivacy;
 
-  private YesNo sensitive_data;
+  private YesNo sensitiveData;
 
-  private Set<TechnicalResource> technical_resource;
+  private Set<TechnicalResource> technicalResource;
 
   /*
    * Title is a property in both Dataset and Distribution, in compliance with

@@ -5,6 +5,8 @@ import lombok.NoArgsConstructor;
 import lombok.AllArgsConstructor;
 import java.util.Optional;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /**
  * For modelling a cost related to data management.
@@ -12,14 +14,15 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Cost {
 
   // MUST be a currency code from ISO-4217
-  private Optional<String> currency_code;
+  private Optional<String> currencyCode;
 
-  @JsonProperty("currency_code")
-  public void setCurrencyCode(String currency_code) {
-    this.currency_code = Optional.ofNullable(currency_code);
+  @JsonProperty("currencyCode")
+  public void setCurrencyCode(String currencyCode) {
+    this.currencyCode = Optional.ofNullable(currencyCode);
   }
 
   private Optional<String> description;

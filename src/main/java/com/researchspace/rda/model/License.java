@@ -4,6 +4,8 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import java.net.URI;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /**
  * Used to indicate the license under which data (each specific Distribution)
@@ -14,15 +16,16 @@ import java.net.URI;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class License {
 
-  private URI license_ref;
+  private URI licenseRef;
 
   /**
    * If date is set in the future, it indicates embargo period. Encoded using
    * the relevant ISO 8601 Date and Time compliant string
    */
-  private String start_date;
+  private String startDate;
 
 }
 

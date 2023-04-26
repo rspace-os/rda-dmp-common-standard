@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /*
  * For specifying details on funded projects, e.g. NSF of EC funded projects.
@@ -14,9 +16,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Funding {
 
-  private FundingId funder_id;
+  private FundingId funderId;
 
   public enum FundingStatus {
 
@@ -34,18 +37,18 @@ public class Funding {
 
   }
 
-  private Optional<FundingStatus> funding_status;
+  private Optional<FundingStatus> fundingStatus;
 
-  @JsonProperty("funding_status")
-  public void setFundingStatus(FundingStatus funding_status) {
-    this.funding_status = Optional.ofNullable(funding_status);
+  @JsonProperty("fundingStatus")
+  public void setFundingStatus(FundingStatus fundingStatus) {
+    this.fundingStatus = Optional.ofNullable(fundingStatus);
   }
 
-  private Optional<GrantId> grant_id;
+  private Optional<GrantId> grantId;
 
-  @JsonProperty("grant_id")
-  public void setGrantId(GrantId grant_id) {
-    this.grant_id = Optional.ofNullable(grant_id);
+  @JsonProperty("grantId")
+  public void setGrantId(GrantId grantId) {
+    this.grantId = Optional.ofNullable(grantId);
   }
 
 }

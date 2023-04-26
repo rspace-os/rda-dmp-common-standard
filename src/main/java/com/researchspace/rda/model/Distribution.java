@@ -8,6 +8,8 @@ import java.net.URI;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import java.net.URISyntaxException;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /**
  * The term "distribution" used here is as defined by the very widely used W3C
@@ -22,17 +24,18 @@ import java.net.URISyntaxException;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Distribution {
 
   /*
    * A URL of the resource that gives access to a distribution of the dataset.
    * e.g. landing page.
    */
-  private Optional<URI> access_url;
+  private Optional<URI> accessUrl;
 
-  @JsonProperty("access_url")
-  public void setAccessUrl(String access_url) throws URISyntaxException {
-    this.access_url = Optional.ofNullable(access_url).flatMap(eir -> {
+  @JsonProperty("accessUrl")
+  public void setAccessUrl(String accessUrl) throws URISyntaxException {
+    this.accessUrl = Optional.ofNullable(accessUrl).flatMap(eir -> {
       try {
         return Optional.of(new URI(eir));
       } catch (Exception e) {
@@ -45,14 +48,14 @@ public class Distribution {
    * Indicates how long this distribution will be/ should be available. MUST be
    * encoded using the relevant ISO 8601 Date and Time compliant string.
    */
-  private Optional<String> available_until;
+  private Optional<String> availableUntil;
 
-  @JsonProperty("available_until")
-  public void setAvailableUntil(String available_until) {
-    this.available_until = Optional.ofNullable(available_until);
+  @JsonProperty("availableUntil")
+  public void setAvailableUntil(String availableUntil) {
+    this.availableUntil = Optional.ofNullable(availableUntil);
   }
 
-  private Optional<Long> byte_size;
+  private Optional<Long> byteSize;
 
   public enum DataAccess {
 
@@ -67,7 +70,7 @@ public class Distribution {
 
   }
 
-  private DataAccess data_access;
+  private DataAccess dataAccess;
 
   /*
    *Description is a property in both Dataset and Distribution, in compliance
@@ -86,11 +89,11 @@ public class Distribution {
    * The URL of the downloadable file in a given format. E.g. CSV file or RDF
    * file.
    */
-  private Optional<URI> download_url;
+  private Optional<URI> downloadUrl;
 
-  @JsonProperty("download_url")
-  public void setDownloadUrl(String download_url) throws URISyntaxException {
-    this.download_url = Optional.ofNullable(download_url).flatMap(eir -> {
+  @JsonProperty("downloadUrl")
+  public void setDownloadUrl(String downloadUrl) throws URISyntaxException {
+    this.downloadUrl = Optional.ofNullable(downloadUrl).flatMap(eir -> {
       try {
         return Optional.of(new URI(eir));
       } catch (Exception e) {

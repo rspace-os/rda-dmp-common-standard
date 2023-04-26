@@ -4,10 +4,13 @@ import lombok.Data;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import java.util.Optional;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Metadata {
 
   private Optional<String> description;
@@ -17,6 +20,6 @@ public class Metadata {
    */
   private String language;
 
-  private MetadataStandardId metadata_standard_id;
+  private MetadataStandardId metadataStandardId;
 
 }

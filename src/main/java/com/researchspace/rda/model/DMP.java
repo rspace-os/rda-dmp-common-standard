@@ -10,11 +10,14 @@ import java.util.Map;
 import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import java.net.URISyntaxException;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class DMP {
 
   /*
@@ -58,29 +61,29 @@ public class DMP {
     this.description = Optional.ofNullable(description);
   }
 
-  private DmpId dmp_id;
+  private DmpId dmpId;
 
   /*
    * To describe ethical issues directly in a DMP.
    */
-  private Optional<String> ethical_issues_description;
+  private Optional<String> ethicalIssuesDescription;
 
-  @JsonProperty("ethical_issues_description")
-  public void setEthical_issues_description(String ethical_issues_description) {
-    this.ethical_issues_description = Optional.ofNullable(ethical_issues_description);
+  @JsonProperty("ethicalIssuesDescription")
+  public void setEthicalIssuesDescription(String ethicalIssuesDescription) {
+    this.ethicalIssuesDescription = Optional.ofNullable(ethicalIssuesDescription);
   }
 
-  private YesNo ethical_issues_exist;
+  private YesNo ethicalIssuesExist;
 
   /*
    * To indicate where a protocol from a meeting with an ethical commitee can
    * be found.
    */
-  private Optional<URI> ethical_issues_report;
+  private Optional<URI> ethicalIssuesReport;
 
-  @JsonProperty("ethical_issues_report")
-  public void setEthical_issues_report(String ethical_issues_report) throws URISyntaxException {
-    this.ethical_issues_report = Optional.ofNullable(ethical_issues_report).flatMap(eir -> {
+  @JsonProperty("ethicalIssuesReport")
+  public void setEthicalIssuesReport(String ethicalIssuesReport) throws URISyntaxException {
+    this.ethicalIssuesReport = Optional.ofNullable(ethicalIssuesReport).flatMap(eir -> {
       try {
         return Optional.of(new URI(eir));
       } catch (Exception e) {

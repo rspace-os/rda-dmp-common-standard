@@ -7,6 +7,8 @@ import java.util.Optional;
 import java.util.Set;
 import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /**
  * Provides information on the system where data is stored. It can be used to
@@ -19,6 +21,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Host {
 
   private Optional<String> availability;
@@ -28,18 +31,18 @@ public class Host {
     this.availability = Optional.ofNullable(availability);
   }
 
-  private Optional<String> backup_frequency;
+  private Optional<String> backupFrequency;
 
-  @JsonProperty("backup_frequency")
-  public void setBackupFrequency(String backup_frequency) {
-    this.backup_frequency = Optional.ofNullable(backup_frequency);
+  @JsonProperty("backupFrequency")
+  public void setBackupFrequency(String backupFrequency) {
+    this.backupFrequency = Optional.ofNullable(backupFrequency);
   }
 
-  private Optional<String> backup_type;
+  private Optional<String> backupType;
 
-  @JsonProperty("backup_type")
-  public void setBackupType(String backup_type) {
-    this.backup_type = Optional.ofNullable(backup_type);
+  @JsonProperty("backupType")
+  public void setBackupType(String backupType) {
+    this.backupType = Optional.ofNullable(backupType);
   }
 
   public enum CertificationStandard {
@@ -70,7 +73,7 @@ public class Host {
 
   }
 
-  private Optional<CertificationStandard> certified_with;
+  private Optional<CertificationStandard> certifiedWith;
 
   private Optional<String> description;
 
@@ -82,11 +85,11 @@ public class Host {
   /*
    * Physical location of the data expressed using ISO 3166-1 country code.
    */
-  private Optional<String> geo_location;
+  private Optional<String> geoLocation;
 
-  @JsonProperty("geo_location")
-  public void setGeoLocation(String geo_location) {
-    this.geo_location = Optional.ofNullable(geo_location);
+  @JsonProperty("geoLocation")
+  public void setGeoLocation(String geoLocation) {
+    this.geoLocation = Optional.ofNullable(geoLocation);
   }
 
   public enum PIDSystem {
@@ -150,16 +153,16 @@ public class Host {
 
   }
 
-  private Set<PIDSystem> pid_system;
+  private Set<PIDSystem> pidSystem;
 
-  private Optional<String> storage_type;
+  private Optional<String> storageType;
 
-  @JsonProperty("storage_type")
-  public void setStorageType(String storage_type) {
-    this.storage_type = Optional.ofNullable(storage_type);
+  @JsonProperty("storageType")
+  public void setStorageType(String storageType) {
+    this.storageType = Optional.ofNullable(storageType);
   }
 
-  private Optional<YesNo> supports_versioning;
+  private Optional<YesNo> supportsVersioning;
 
   private String title;
 

@@ -7,6 +7,8 @@ import lombok.NoArgsConstructor;
 import java.util.Optional;
 import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /**
  * For modelling a party involved in the process of the data management
@@ -16,9 +18,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
+@JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Contributor {
 
-  private PersonId contact_id;
+  private PersonId contactId;
 
   // Mail address
   private Optional<String> mbox;
