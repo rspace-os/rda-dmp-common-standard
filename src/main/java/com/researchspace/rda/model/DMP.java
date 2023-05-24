@@ -61,6 +61,11 @@ public class DMP {
     this.description = Optional.ofNullable(description);
   }
 
+  @JsonProperty("description")
+  public String getDescription() {
+    return this.description.orElse(null);
+  }
+
   private DmpId dmpId;
 
   /*
