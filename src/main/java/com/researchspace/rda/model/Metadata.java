@@ -15,6 +15,11 @@ public class Metadata {
 
   private Optional<String> description;
 
+  @JsonProperty("description")
+  public void setDescription(String description) {
+    this.description = Optional.ofNullable(description);
+  }
+
   /*
    * Language of the metadata expressed using ISO 639-3.
    */
