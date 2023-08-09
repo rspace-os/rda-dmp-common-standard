@@ -76,7 +76,7 @@ public class Host {
   private Optional<CertificationStandard> certifiedWith;
 
   @JsonProperty("certifiedWith")
-  public void setCertifiedWith(Long certifiedWith) {
+  public void setCertifiedWith(CertificationStandard certifiedWith) {
     this.certifiedWith = Optional.ofNullable(certifiedWith);
   }
 
@@ -170,7 +170,7 @@ public class Host {
   private Optional<YesNo> supportsVersioning;
 
   @JsonProperty("supportsVersioning")
-  public void setSupportsVersioning(Long supportsVersioning) {
+  public void setSupportsVersioning(YesNo supportsVersioning) {
     this.supportsVersioning = Optional.ofNullable(supportsVersioning);
   }
 

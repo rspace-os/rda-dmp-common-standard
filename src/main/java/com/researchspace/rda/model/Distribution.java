@@ -121,7 +121,7 @@ public class Distribution {
   private Optional<Host> host;
 
   @JsonProperty("host")
-  public void setHost(Long host) {
+  public void setHost(Host host) {
     this.host = Optional.ofNullable(host);
   }
 
