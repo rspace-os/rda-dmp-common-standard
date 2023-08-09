@@ -57,6 +57,11 @@ public class Distribution {
 
   private Optional<Long> byteSize;
 
+  @JsonProperty("byteSize")
+  public void setByteSize(Long byteSize) {
+    this.byteSize = Optional.ofNullable(byteSize);
+  }
+
   public enum DataAccess {
 
     @JsonProperty("open")
@@ -114,6 +119,11 @@ public class Distribution {
    * (e.g. repository) where data is stored.
    */
   private Optional<Host> host;
+
+  @JsonProperty("host")
+  public void setHost(Host host) {
+    this.host = Optional.ofNullable(host);
+  }
 
   private Set<License> license;
 

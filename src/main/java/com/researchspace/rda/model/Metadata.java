@@ -6,6 +6,8 @@ import lombok.NoArgsConstructor;
 import java.util.Optional;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Data
 @AllArgsConstructor
@@ -14,6 +16,11 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 public class Metadata {
 
   private Optional<String> description;
+
+  @JsonProperty("description")
+  public void setDescription(String description) {
+    this.description = Optional.ofNullable(description);
+  }
 
   /*
    * Language of the metadata expressed using ISO 639-3.

@@ -75,6 +75,11 @@ public class Host {
 
   private Optional<CertificationStandard> certifiedWith;
 
+  @JsonProperty("certifiedWith")
+  public void setCertifiedWith(CertificationStandard certifiedWith) {
+    this.certifiedWith = Optional.ofNullable(certifiedWith);
+  }
+
   private Optional<String> description;
 
   @JsonProperty("description")
@@ -163,6 +168,11 @@ public class Host {
   }
 
   private Optional<YesNo> supportsVersioning;
+
+  @JsonProperty("supportsVersioning")
+  public void setSupportsVersioning(YesNo supportsVersioning) {
+    this.supportsVersioning = Optional.ofNullable(supportsVersioning);
+  }
 
   private String title;
 
