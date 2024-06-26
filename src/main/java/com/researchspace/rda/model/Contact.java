@@ -1,11 +1,11 @@
 package com.researchspace.rda.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 
 /**
  * For modelling a party which can provide any information on the DMP. This is
@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
+@JsonIgnoreProperties(ignoreUnknown=true)
 public class Contact {
 
   // Identifier for a contact person
