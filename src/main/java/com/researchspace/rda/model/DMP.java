@@ -54,16 +54,16 @@ public class DMP {
   /*
    * To provide any free-form text information on a DMP.
    */
-  private Optional<String> description;
+  private String description;
 
   @JsonProperty("description")
   public void setDescription(String description) {
-    this.description = Optional.ofNullable(description);
+    this.description = description;
   }
 
   @JsonProperty("description")
   public String getDescription() {
-    return this.description.orElse(null);
+    return this.description;
   }
 
   private DmpId dmpId;
