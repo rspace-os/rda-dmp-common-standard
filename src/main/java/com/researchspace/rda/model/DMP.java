@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import com.researchspace.rda.model.DmpId.DmpIdType;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
@@ -17,7 +18,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @NoArgsConstructor
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-@JsonIgnoreProperties(ignoreUnknown=true)
+@JsonIgnoreProperties(ignoreUnknown = true)
 public class DMP {
 
   /*
@@ -111,6 +112,31 @@ public class DMP {
   private Set<Project> project;
 
   private String title;
+
+  /*
+   * This is maintained for backwards compatibility and may be removed in the
+   * future in favour of using the dmp_id property as a unique identifier.
+   */
+  public Long getId() {
+    String dmpLink = this.getDmpLink();
+    String idString = dmpLink.substring(dmpLink.lastIndexOf("/") + 1);
+    return Long.parseLong(idString);
+  }
+
+  public String getDmpLink() {
+    if (DmpIdType.URL.equals(this.getDmpId().getType())) {
+      return this.getDmpId().getIdentifier();
+    } else {
+      return null;
+    }
+  }
+
+  public String getDoiLink() {
+    if (DmpIdType.DOI.equals(this.getDmpId().getType())) {
+      return this.getDmpId().getIdentifier();
+    }
+    return null;
+  }
 
 }
 

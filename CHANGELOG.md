@@ -1,7 +1,10 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
-## [0.0.4]
+## [0.1.0]
+- Adding extra package and object behaviour methods for DMP
+
+- ## [0.0.4]
 - Switch to using parent pom from rspace-os-parent project
 - Compile with java 17
 - Remove unused dependencies
