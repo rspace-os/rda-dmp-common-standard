@@ -1,6 +1,9 @@
 # Changelog
 All notable changes to this project will be documented in this file.
 
+## [0.1.2]
+- Removing `java.util.Optional` fields on the class model
+
 ## [0.1.1]
 - removing dependency on parent pom (rspace-os-parent) in pom.xml file, for easier dependency management by projects importing this library 
 

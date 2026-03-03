@@ -1,15 +1,14 @@
 package com.researchspace.rda.model;
 
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import java.util.Optional;
-import java.net.URI;
-import java.util.Set;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.net.URISyntaxException;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.net.URI;
+import java.net.URISyntaxException;
+import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * The term "distribution" used here is as defined by the very widely used W3C
@@ -31,35 +30,31 @@ public class Distribution {
    * A URL of the resource that gives access to a distribution of the dataset.
    * e.g. landing page.
    */
-  private Optional<URI> accessUrl;
+  private URI accessUrl;
 
   @JsonProperty("accessUrl")
   public void setAccessUrl(String accessUrl) throws URISyntaxException {
-    this.accessUrl = Optional.ofNullable(accessUrl).flatMap(eir -> {
-      try {
-        return Optional.of(new URI(eir));
-      } catch (Exception e) {
-        return Optional.empty();
-      }
-    });
+    if(accessUrl != null && !accessUrl.isBlank()){
+      this.accessUrl = new URI(accessUrl);
+    }
   }
 
   /*
    * Indicates how long this distribution will be/ should be available. MUST be
    * encoded using the relevant ISO 8601 Date and Time compliant string.
    */
-  private Optional<String> availableUntil;
+  private String availableUntil;
 
   @JsonProperty("availableUntil")
   public void setAvailableUntil(String availableUntil) {
-    this.availableUntil = Optional.ofNullable(availableUntil);
+    this.availableUntil = availableUntil;
   }
 
-  private Optional<Long> byteSize;
+  private Long byteSize;
 
   @JsonProperty("byteSize")
   public void setByteSize(Long byteSize) {
-    this.byteSize = Optional.ofNullable(byteSize);
+    this.byteSize = byteSize;
   }
 
   public enum DataAccess {
@@ -83,28 +78,24 @@ public class Distribution {
    Dataset represents a more abstract concept, while the distribution can point
    to a specific file.
    */
-  private Optional<String> description;
+  private String description;
 
   @JsonProperty("description")
   public void setDescription(String description) {
-    this.description = Optional.ofNullable(description);
+    this.description = description;
   }
 
   /*
    * The URL of the downloadable file in a given format. E.g. CSV file or RDF
    * file.
    */
-  private Optional<URI> downloadUrl;
+  private URI downloadUrl;
 
   @JsonProperty("downloadUrl")
   public void setDownloadUrl(String downloadUrl) throws URISyntaxException {
-    this.downloadUrl = Optional.ofNullable(downloadUrl).flatMap(eir -> {
-      try {
-        return Optional.of(new URI(eir));
-      } catch (Exception e) {
-        return Optional.empty();
-      }
-    });
+    if(downloadUrl != null && !downloadUrl.isBlank()){
+      this.downloadUrl = new URI(downloadUrl);
+    }
   }
 
   /*
@@ -118,11 +109,11 @@ public class Distribution {
    * To provide information on quality of service provided by infrastructure
    * (e.g. repository) where data is stored.
    */
-  private Optional<Host> host;
+  private Host host;
 
   @JsonProperty("host")
   public void setHost(Host host) {
-    this.host = Optional.ofNullable(host);
+    this.host = host;
   }
 
   private Set<License> license;

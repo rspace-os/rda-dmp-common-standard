@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.util.Optional;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -53,11 +52,11 @@ public class Dataset {
 
   }
 
-  private Optional<String> dataQualityAssurance;
+  private String dataQualityAssurance;
 
   @JsonProperty("dataQualityAssurance")
   public void setDataQualityAssurance(String dataQualityAssurance) {
-    this.dataQualityAssurance = Optional.ofNullable(dataQualityAssurance);
+    this.dataQualityAssurance = dataQualityAssurance;
   }
 
   private DatasetId datasetId;
@@ -68,11 +67,11 @@ public class Dataset {
    * the Dataset represents a more abstract concept, while the distribution can
    * point to a specific file.
    */
-  private Optional<String> description;
+  private String description;
 
   @JsonProperty("description")
   public void setDescription(String description) {
-    this.description = Optional.ofNullable(description);
+    this.description = description;
   }
 
   private Set<Distribution> distribution;
@@ -80,11 +79,11 @@ public class Dataset {
   /*
    * Encoded using the relevant ISO 8601 Date and Time compliant string.
    */
-  private Optional<String> issued;
+  private String issued;
 
   @JsonProperty("issued")
   public void setIssued(String issued) {
-    this.issued = Optional.ofNullable(issued);
+    this.issued = issued;
   }
 
   private Set<String> keyword;
@@ -92,22 +91,22 @@ public class Dataset {
   /*
    * Language of the dataset expressed using ISO 639-3.
    */
-  private Optional<String> language;
+  private String language;
 
   @JsonProperty("language")
   public void setLanguage(String language) {
-    this.language = Optional.ofNullable(language);
+    this.language = language;
   }
 
   private Set<Metadata> metadata;
 
   private YesNo personalData;
 
-  private Optional<String> preservationStatement;
+  private String preservationStatement;
 
   @JsonProperty("preservationStatement")
   public void setPreservationStatement(String preservationStatement) {
-    this.preservationStatement = Optional.ofNullable(preservationStatement);
+    this.preservationStatement = preservationStatement;
   }
 
   private Set<SecurityAndPrivacy> securityAndPrivacy;
@@ -131,11 +130,11 @@ public class Dataset {
    * https://schema.datacite.org/meta/kernel-4.1/doc/DataCite-MetadataKernel_v4.1.pdf
    * http://vocabularies.coar-repositories.org/pubby/resource_type.html
    */
-  private Optional<String> type;
+  private String type;
 
   @JsonProperty("type")
   public void setType(String type) {
-    this.type = Optional.ofNullable(type);
+    this.type = type;
   }
 
 }

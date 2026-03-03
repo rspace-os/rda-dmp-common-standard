@@ -8,7 +8,6 @@ import com.researchspace.rda.model.DmpId.DmpIdType;
 import java.net.URI;
 import java.net.URISyntaxException;
 import java.util.List;
-import java.util.Optional;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -72,11 +71,11 @@ public class DMP {
   /*
    * To describe ethical issues directly in a DMP.
    */
-  private Optional<String> ethicalIssuesDescription;
+  private String ethicalIssuesDescription;
 
   @JsonProperty("ethicalIssuesDescription")
   public void setEthicalIssuesDescription(String ethicalIssuesDescription) {
-    this.ethicalIssuesDescription = Optional.ofNullable(ethicalIssuesDescription);
+    this.ethicalIssuesDescription = ethicalIssuesDescription;
   }
 
   private YesNo ethicalIssuesExist;
@@ -85,17 +84,13 @@ public class DMP {
    * To indicate where a protocol from a meeting with an ethical commitee can
    * be found.
    */
-  private Optional<URI> ethicalIssuesReport;
+  private URI ethicalIssuesReport;
 
   @JsonProperty("ethicalIssuesReport")
   public void setEthicalIssuesReport(String ethicalIssuesReport) throws URISyntaxException {
-    this.ethicalIssuesReport = Optional.ofNullable(ethicalIssuesReport).flatMap(eir -> {
-      try {
-        return Optional.of(new URI(eir));
-      } catch (Exception e) {
-        return Optional.empty();
-      }
-    });
+    if(ethicalIssuesReport != null && !ethicalIssuesReport.isBlank()){
+      this.ethicalIssuesReport = new URI(ethicalIssuesReport);
+    }
   }
 
   /*
