@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.util.Optional;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -25,11 +24,11 @@ public class Contributor {
   private PersonId contactId;
 
   // Mail address
-  private Optional<String> mbox;
+  private String mbox;
 
   @JsonProperty("mbox")
   public void setMbox(String mbox) {
-    this.mbox = Optional.ofNullable(mbox);
+    this.mbox = mbox;
   }
 
   // Name

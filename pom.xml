@@ -6,7 +6,7 @@
 
     <groupId>com.github.rspace-os</groupId>
     <artifactId>rda-dmp-common-standard</artifactId>
-    <version>0.1.1</version>
+    <version>0.1.2</version>
     <name>rda-dmp-common-standard</name>
     <description>Implementation of the RDA DMP Common Standard for machine-actionable Data Management Plans.</description>
 

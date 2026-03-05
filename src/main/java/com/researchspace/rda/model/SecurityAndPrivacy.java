@@ -1,12 +1,10 @@
 package com.researchspace.rda.model;
 
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import java.util.Optional;
-import java.util.Set;
-import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 
 /**
  * Used to indicate any specific requirements related to security and privacy
@@ -25,11 +23,11 @@ public class SecurityAndPrivacy {
   /*
    * E.g. Server with data must be kept in a locked room.
    */
-  private Optional<String> description;
+  private String description;
 
   @JsonProperty("description")
   public void setDescription(String description) {
-    this.description = Optional.ofNullable(description);
+    this.description = description;
   }
 
 }

@@ -1,14 +1,13 @@
 package com.researchspace.rda.model;
 
-import lombok.Data;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
-import java.util.Optional;
-import java.util.Set;
-import java.net.URI;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.net.URI;
+import java.util.Set;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 /**
  * Provides information on the system where data is stored. It can be used to
@@ -24,25 +23,25 @@ import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class Host {
 
-  private Optional<String> availability;
+  private String availability;
 
   @JsonProperty("availability")
   public void setAvailability(String availability) {
-    this.availability = Optional.ofNullable(availability);
+    this.availability = availability;
   }
 
-  private Optional<String> backupFrequency;
+  private String backupFrequency;
 
   @JsonProperty("backupFrequency")
   public void setBackupFrequency(String backupFrequency) {
-    this.backupFrequency = Optional.ofNullable(backupFrequency);
+    this.backupFrequency = backupFrequency;
   }
 
-  private Optional<String> backupType;
+  private String backupType;
 
   @JsonProperty("backupType")
   public void setBackupType(String backupType) {
-    this.backupType = Optional.ofNullable(backupType);
+    this.backupType = backupType;
   }
 
   public enum CertificationStandard {
@@ -73,28 +72,28 @@ public class Host {
 
   }
 
-  private Optional<CertificationStandard> certifiedWith;
+  private CertificationStandard certifiedWith;
 
   @JsonProperty("certifiedWith")
   public void setCertifiedWith(CertificationStandard certifiedWith) {
-    this.certifiedWith = Optional.ofNullable(certifiedWith);
+    this.certifiedWith = certifiedWith;
   }
 
-  private Optional<String> description;
+  private String description;
 
   @JsonProperty("description")
   public void setDescription(String description) {
-    this.description = Optional.ofNullable(description);
+    this.description = description;
   }
 
   /*
    * Physical location of the data expressed using ISO 3166-1 country code.
    */
-  private Optional<String> geoLocation;
+  private String geoLocation;
 
   @JsonProperty("geoLocation")
   public void setGeoLocation(String geoLocation) {
-    this.geoLocation = Optional.ofNullable(geoLocation);
+    this.geoLocation = geoLocation;
   }
 
   public enum PIDSystem {
@@ -160,18 +159,18 @@ public class Host {
 
   private Set<PIDSystem> pidSystem;
 
-  private Optional<String> storageType;
+  private String storageType;
 
   @JsonProperty("storageType")
   public void setStorageType(String storageType) {
-    this.storageType = Optional.ofNullable(storageType);
+    this.storageType = storageType;
   }
 
-  private Optional<YesNo> supportsVersioning;
+  private YesNo supportsVersioning;
 
   @JsonProperty("supportsVersioning")
   public void setSupportsVersioning(YesNo supportsVersioning) {
-    this.supportsVersioning = Optional.ofNullable(supportsVersioning);
+    this.supportsVersioning = supportsVersioning;
   }
 
   private String title;

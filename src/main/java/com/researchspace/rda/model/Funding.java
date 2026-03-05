@@ -4,7 +4,6 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
-import java.util.Optional;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -37,18 +36,18 @@ public class Funding {
 
   }
 
-  private Optional<FundingStatus> fundingStatus;
+  private FundingStatus fundingStatus;
 
   @JsonProperty("fundingStatus")
   public void setFundingStatus(FundingStatus fundingStatus) {
-    this.fundingStatus = Optional.ofNullable(fundingStatus);
+    this.fundingStatus = fundingStatus;
   }
 
-  private Optional<GrantId> grantId;
+  private GrantId grantId;
 
   @JsonProperty("grantId")
   public void setGrantId(GrantId grantId) {
-    this.grantId = Optional.ofNullable(grantId);
+    this.grantId = grantId;
   }
 
 }

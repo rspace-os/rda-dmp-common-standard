@@ -2,7 +2,6 @@ package com.researchspace.rda.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import java.util.Optional;
 import java.util.Set;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -19,22 +18,22 @@ import lombok.NoArgsConstructor;
 @JsonIgnoreProperties(ignoreUnknown=true)
 public class Project {
 
-  private Optional<String> description;
+  private String description;
 
   @JsonProperty("description")
   public void setDescription(String description) {
-    this.description = Optional.ofNullable(description);
+    this.description = description;
   }
 
   /*
    * Project end date. Encoded using the relevant ISO 8601 Date and Time
    * compliant string.
    */
-  private Optional<String> end;
+  private String end;
 
   @JsonProperty("end")
   public void setEnd(String end) {
-    this.end = Optional.ofNullable(end);
+    this.end = end;
   }
 
   private Set<Funding> funding;
@@ -43,11 +42,11 @@ public class Project {
    * Project start date. Encoded using the relevant ISO 8601 Date and Time
    * compliant string.
    */
-  private Optional<String> start;
+  private String start;
 
   @JsonProperty("start")
   public void setStart(String start) {
-    this.start = Optional.ofNullable(start);
+    this.start = start;
   }
 
   private String title;
